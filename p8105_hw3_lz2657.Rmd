@@ -37,3 +37,15 @@ filter(count_states_2002, nn == 7)
 ```
 
 In 2002, only CT, FL and NC were observed at 7 locations.
+
+Question 2:
+```{r problem1_question2, fig.width = 10, fig.height = 8}
+count_states_year = count(count(brfss_data, year, locationabbr, locationdesc), year, locationabbr)
+
+ggplot(data = count_states_year, aes(x = year, y = nn, colour = locationabbr)) +
+labs(list(title = "year - number of locations", y = paste("number of locations"))) + 
+geom_line(size=0.5)
+```
+
+Here is the required spaghetti plot and I enlarge the size of it to make it clearer.
+
