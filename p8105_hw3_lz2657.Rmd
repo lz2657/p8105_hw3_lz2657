@@ -29,3 +29,11 @@ brfss_data$response = factor(brfss_data$response, levels = c("Excellent", "Very 
 
 brfss_data
 ```
+
+Question 1:
+```{r problem1_question1}
+count_states_2002 = count(count(subset(brfss_data, year == 2002), locationabbr, locationdesc), locationabbr)
+filter(count_states_2002, nn == 7)
+```
+
+In 2002, only CT, FL and NC were observed at 7 locations.
