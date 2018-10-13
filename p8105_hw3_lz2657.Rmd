@@ -71,3 +71,22 @@ ggplot(subset(brfss_prop, !is.na(mean)), aes(x = year, y = mean, color = respons
 ```
 
 The plot is shown above. The proportion of "Very good" is the highest and that of "Poor" is the lowest. All the proportions of the responses other than "Excellent" were almost unchange. The proportion of "Excellent" had decreased for about 2 percent during the period.
+
+## Problem 2
+
+```{r problem2_read, include=FALSE}
+data("instacart")
+instacart_data = instacart
+```
+
+Question 1:
+```{r problem2_question1}
+n_distinct(instacart_data$aisle_id)
+count_aisle_item = instacart_data %>%
+  group_by(aisle_id, aisle) %>%
+  summarize(items_number = n())
+count_aisle_item[which.max(count_aisle_item$items_number),2]
+max(count_aisle_item$items_number)
+```
+
+There are 134 aisles and most items are ordered from fresh vegetables, which has 150609 items.
