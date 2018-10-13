@@ -60,3 +60,14 @@ brfss_exclt_prop
 
 The mean of the proportion of "Excellent" doensn't have large changes while the sd of it was decreasing.
 
+Question 4:
+```{r problem1_question4, fig.width = 13}
+brfss_prop = brfss_data %>%
+  group_by(year, locationabbr, response) %>%
+  summarize(mean = mean(data_value))
+ggplot(subset(brfss_prop, !is.na(mean)), aes(x = year, y = mean, color = response)) + 
+  geom_smooth(se = FALSE) + 
+  facet_grid(. ~ response)
+```
+
+The plot is shown above. The proportion of "Very good" is the highest and that of "Poor" is the lowest. All the proportions of the responses other than "Excellent" were almost unchange. The proportion of "Excellent" had decreased for about 2 percent during the period.
