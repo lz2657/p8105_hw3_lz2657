@@ -49,3 +49,14 @@ geom_line(size=0.5)
 
 Here is the required spaghetti plot and I enlarge the size of it to make it clearer.
 
+Question 3:
+```{r problem1_question3}
+brfss_exclt_prop = subset(brfss_data, locationabbr == "NY" & response == "Excellent" & (year == 2002 | year == 2006 | year == 2010)) %>%
+  group_by(year) %>%
+  summarize(mean = mean(data_value), sd = sd(data_value))
+
+brfss_exclt_prop
+```
+
+The mean of the proportion of "Excellent" doensn't have large changes while the sd of it was decreasing.
+
