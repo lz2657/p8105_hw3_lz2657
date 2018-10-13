@@ -100,3 +100,17 @@ ggplot(count_aisle_item, aes(x = reorder(aisle_id, -items_number), y = items_num
 ```
 
 The plot is shown above. I use bar plot and rank the aisles to make it more readable. Also, I set the height to 16 and flip the coordinate axes so that the id of the aisles can be distinguished.
+
+Question 3:
+```{r problem2_question3}
+most_pop_item = subset(instacart_data, aisle == "baking ingredients" | aisle == "dog food care" | aisle == "packaged vegetables fruits") %>%
+  group_by(aisle, product_name) %>%
+  summarize(items_number = n()) %>%
+  group_by(aisle) %>%
+  filter(max(items_number) == items_number)
+
+most_pop_item
+```
+
+The most popular items in each of the aisles “baking ingredients”, “dog food care”, and “packaged vegetables fruits” are "Light Brown Sugar", "Snack Sticks Chicken & Rice Recipe Dog Treats" and "Organic Baby Spinach", respectively.
+
