@@ -90,3 +90,13 @@ max(count_aisle_item$items_number)
 ```
 
 There are 134 aisles and most items are ordered from fresh vegetables, which has 150609 items.
+
+Question 2:
+```{r problem2_question2, fig.height = 16}
+ggplot(count_aisle_item, aes(x = reorder(aisle_id, -items_number), y = items_number)) + 
+  labs(list(x = "aisle id")) +
+  geom_bar(stat = "identity") + 
+  coord_flip()
+```
+
+The plot is shown above. I use bar plot and rank the aisles to make it more readable. Also, I set the height to 16 and flip the coordinate axes so that the id of the aisles can be distinguished.
