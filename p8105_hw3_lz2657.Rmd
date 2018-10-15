@@ -128,3 +128,11 @@ product_mean_hour
 
 Here is the required table. It turns out that the mean hours of Coffee Ice Cream are almost all longer than that of Pink Lady Apples on each day of the week.
 
+## Problem 3
+
+```{r problem3_read, include=FALSE}
+data("ny_noaa")
+data_noaa = ny_noaa
+```
+
+The ny_noaa data is a dataframe with 2595176 observations of 7 variables. The variables include date <date>, prcp <int>, snow <int>, tmax <chr>, tmin<chr> and so on. An example of the observations is `r ny_noaa[496884,]`, which shows five core variables for a New York state weather station.
