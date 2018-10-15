@@ -79,7 +79,7 @@ data("instacart")
 instacart_data = instacart
 ```
 
-The instacart dataset is a dataframe with 1384617 observations of 15 variables. The variables include order_id <int>, product_id <int>, user_id <int>, order_dow <int>, order_hour_of_day <int>, aisle <chr> and so on. An example of the observations is `r head(instacart_data,1)`, which shows the details of a product from an order.
+The instacart dataset is a dataframe with 1384617 observations of 15 variables. The variables include order_id <int>, product_id <int>, user_id <int>, , order_dow <int>, order_hour_of_day <int>, , product_name <chr>, aisle_id <int>, aisle <chr> and so on. Order_dow means the day of the week on which the order was placed. Order_number means the order sequence number for this user (1 = first, n = nth). Order_hour_of_day means the hour of the day on which the order was placed. The other variables are just like the name of them. An example of the observations is `r head(instacart_data,1)`, which shows the details of a product from an order.
 
 Question 1:
 ```{r problem2_question1}
@@ -135,4 +135,4 @@ data("ny_noaa")
 data_noaa = ny_noaa
 ```
 
-The ny_noaa data is a dataframe with 2595176 observations of 7 variables. The variables include date <date>, prcp <int>, snow <int>, tmax <chr>, tmin<chr> and so on. An example of the observations is `r ny_noaa[496884,]`, which shows five core variables for a New York state weather station.
+The ny_noaa data is a dataframe with 2595176 observations of 7 variables. The variables are id <chr>, date <date>, prcp <int>, snow <int>, snwd <int>, tmax <chr> and tmin<chr>, which mean weather station ID, date of observation, precipitation (tenths of mm), snowfall (mm), snow depth (mm), maximum and minimum temperature (tenths of degrees C), respectively. The proportions of the missing data in five key variables are `r round(sum(is.na(ny_noaa$prcp))/2595176 * 100, 2)`%, `r round(sum(is.na(ny_noaa$snow))/2595176 * 100, 2)`%, `r round(sum(is.na(ny_noaa$snwd))/2595176 * 100, 2)`%, `r round(sum(is.na(ny_noaa$tmax))/2595176 * 100, 2)`% and `r round(sum(is.na(ny_noaa$tmin))/2595176 * 100, 2)`%.
