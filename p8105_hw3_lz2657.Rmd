@@ -79,6 +79,8 @@ data("instacart")
 instacart_data = instacart
 ```
 
+The instacart dataset is a dataframe with 1384617 observations of 15 variables. The variables include order_id <int>, product_id <int>, user_id <int>, order_dow <int>, order_hour_of_day <int>, aisle <chr> and so on. An example of the observations is `r head(instacart_data,1)`, which shows the details of a product from an order.
+
 Question 1:
 ```{r problem2_question1}
 n_distinct(instacart_data$aisle_id)
