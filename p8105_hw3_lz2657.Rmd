@@ -136,3 +136,19 @@ data_noaa = ny_noaa
 ```
 
 The ny_noaa data is a dataframe with 2595176 observations of 7 variables. The variables are id <chr>, date <date>, prcp <int>, snow <int>, snwd <int>, tmax <chr> and tmin<chr>, which mean weather station ID, date of observation, precipitation (tenths of mm), snowfall (mm), snow depth (mm), maximum and minimum temperature (tenths of degrees C), respectively. The proportions of the missing data in five key variables are `r round(sum(is.na(ny_noaa$prcp))/2595176 * 100, 2)`%, `r round(sum(is.na(ny_noaa$snow))/2595176 * 100, 2)`%, `r round(sum(is.na(ny_noaa$snwd))/2595176 * 100, 2)`%, `r round(sum(is.na(ny_noaa$tmax))/2595176 * 100, 2)`% and `r round(sum(is.na(ny_noaa$tmin))/2595176 * 100, 2)`%.
+
+```{r problem3_clean}
+noaa_data = ny_noaa %>%
+  separate(date, into = c("year","month","day"), sep = '-') %>%
+  gather(key = type, value = data, prcp:tmin, na.rm = TRUE) %>%
+  transform(data = as.numeric(data))
+```
+
+Question 1:
+```{r problem3_question1}
+noaa_snow = subset(noaa_data, type == "snow")
+noaa_snow_count = count(noaa_snow,data)
+filter(noaa_snow_count, n == max(n))
+```
+
+The most commonly observed values for snowfall is 0, which is observed by 2008508 times. This is because it's not snowy in NY most of the time.
